@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Button from '@/components/public/Button/Button.vue';
+import LinkCard from '@/components/Link/Card.vue'
 
 
 </script>
@@ -12,6 +13,10 @@ import Button from '@/components/public/Button/Button.vue';
             </div>
             <div class="home_actions">
                 <Button>Add New Link</Button>
+            </div>
+
+            <div class="links">
+                <LinkCard/>
             </div>
         </div>
     </div>
@@ -33,5 +38,9 @@ import Button from '@/components/public/Button/Button.vue';
         margin: 0 auto;
         margin-top: 2rem;
     }
+}
+
+.links{
+    margin-top: 20px;
 }
 </style>

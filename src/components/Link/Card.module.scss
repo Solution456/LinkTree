@@ -1,0 +1,50 @@
+@import '/src/assets/styles/variables';
+
+.LinkCard {
+    display: flex;
+    background-color: $text-white;
+    border-radius: $rounded-lg;
+    padding: 15px 10px;
+    overflow: hidden;
+    gap: 10px;
+    width: 100%;
+
+    &_icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg{
+            height: 24px;
+            width: 24px;
+        }
+    }
+
+    &_main {
+        display: flex;
+        flex-direction: column;
+
+        &__top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        &__link {
+            a {
+                -webkit-line-clamp: 1;
+                display: -webkit-box;
+                word-break: break-word;
+                overflow: hidden;
+                padding-right: 4px;
+                -webkit-box-orient: vertical;
+                
+
+
+            }
+        }
+
+    }
+
+}
