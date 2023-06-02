@@ -1,0 +1,37 @@
+@import '/src/assets/styles/variables.scss';
+
+
+.button {
+    padding: .75rem 1rem;
+    display: inline-flex;
+    width: 100%;
+    min-height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2.5rem;
+    background-color: $purple-prim;
+    color: $text-white;
+    transition-property: color, background-color;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-duration: .15s;
+    border: 0;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    
+    
+
+    &:hover {
+        background-color: $purple-prim-hover;
+    }
+
+    &_content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display:flex;
+        flex:1 1 auto;
+        align-items: center;
+        justify-content: center;
+    }
+}

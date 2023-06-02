@@ -1,0 +1,35 @@
+@import '/src/assets/styles/variables.scss';
+
+
+.nav {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background-color: $bg-light-snd;
+    width: 100%;
+    
+
+}
+
+.nav_items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 40px;
+    /* li{
+        flex: 1 1 0%
+    }   
+ */
+}
+.nav_items__link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .5rem;
+    border-radius: .375rem;
+    text-transform: capitalize;
+
+    &:hover{
+        background-color: $text-gray200;
+    }
+}

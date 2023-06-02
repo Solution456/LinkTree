@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;900&display=swap');
+
+
+
+/* Colors */
+
+$bg-light: #f3f4f6;
+$bg-light-snd: #ffffff;
+
+$text-primary-light: #121415;
+$text-gray200: #e5e7eb;
+$text-gray300: #d1d5db;
+$text-white: #ffffff;
+
+$purple-prim: #7e22ce;
+$purple-prim-hover: #9333ea;
+
+$success: #047857;
+$success-hover: #10b981;
+$warn: #e11d48;
+$warn-hover: #f43f5e;
+
+$overlay: rgba(41, 41, 41, 0.3);
+
+
+/* Fonts */
+$body-font: 'Noto Sans', sans-serif;
+
+$mobile-query: 700px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile-query}) {
+    @content;
+  }
+}
+
+$small: 700px;
+
+@mixin media($media) {
+  @if $media ==no-mobile-screens {
+    @media only screen and (min-width: $small) {
+      @content;
+    }
+  }
+}

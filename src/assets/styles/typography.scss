@@ -1,0 +1,51 @@
+@import 'variables.scss';
+
+.title-1 {
+    color: $text-primary-light;
+    font-weight: 900;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.title-2 {
+    @extend .title-1;
+    font-size: 1.5rem;
+}
+
+.sub-title-1{
+    color: $text-gray300;
+    font-size: .875rem;
+    font-weight: 500;
+}
+
+
+.sub-title-2 {
+    @extend .sub-title-1;
+    font-size: .75rem;
+}
+
+.body-base{
+    color: $text-primary-light;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.body-sm{
+    @extend .body-base;
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
+
+.body-xs{
+    @extend .body-base;
+    font-size: .75rem;
+    line-height: 1rem;
+}
+
+.body-lg{
+    @extend .body-base;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
