@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Button from '@/components/public/Button/Button.vue';
 import LinkCard from '@/components/Link/Card.vue'
+import Grid from '@/components/public/Grid/Grid.vue';
 
 
 </script>
@@ -16,7 +17,14 @@ import LinkCard from '@/components/Link/Card.vue'
             </div>
 
             <div class="links">
-                <LinkCard/>
+                <Grid>
+                    <LinkCard/>
+                    <LinkCard/>
+                    <LinkCard/>
+                    <LinkCard/>
+                    <LinkCard/>
+                </Grid>
+                
             </div>
         </div>
     </div>
