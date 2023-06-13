@@ -8,6 +8,7 @@
     overflow: hidden;
     gap: 10px;
     width: 100%;
+    cursor: pointer;
 
     &_icon {
         display: flex;
@@ -32,6 +33,7 @@
         }
 
         &__link {
+            margin-top: .5rem;
             a {
                 -webkit-line-clamp: 1;
                 display: -webkit-box;
