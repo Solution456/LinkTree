@@ -2,6 +2,12 @@
 import Button from '@/components/public/Button/Button.vue';
 import LinkCard from '@/components/Link/Card.vue'
 import Grid from '@/components/public/Grid/Grid.vue';
+import Modal from '@/components/public/Modal/Modal.vue';
+import { ref } from 'vue';
+
+
+
+const ModalLink = ref<InstanceType<typeof Modal> | null>(null)
 
 
 </script>
@@ -18,14 +24,23 @@ import Grid from '@/components/public/Grid/Grid.vue';
 
             <div class="links">
                 <Grid>
-                    <LinkCard/>
-                    <LinkCard/>
-                    <LinkCard/>
-                    <LinkCard/>
-                    <LinkCard/>
+                    <LinkCard @click="ModalLink?.openClose" />
+                    <LinkCard />
+                    <LinkCard />
+                    <LinkCard />
+                    <LinkCard />
                 </Grid>
-                
             </div>
+
+            <Modal fullscreen ref="ModalLink">
+                <template #header>
+                    Modalca
+                    
+                </template>
+                <template #body>
+                    Modalo4kasaffffffffffffff
+                </template>
+            </Modal>
         </div>
     </div>
 </template>
@@ -41,14 +56,14 @@ import Grid from '@/components/public/Grid/Grid.vue';
         margin-top: 2rem;
     }
 
-    &_actions{
+    &_actions {
         max-width: 600px;
         margin: 0 auto;
         margin-top: 2rem;
     }
 }
 
-.links{
+.links {
     margin-top: 20px;
 }
 </style>
