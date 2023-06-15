@@ -4,6 +4,7 @@ import LinkCard from '@/components/Link/Card.vue'
 import Grid from '@/components/public/Grid/Grid.vue';
 import Modal from '@/components/public/Modal/Modal.vue';
 import { ref } from 'vue';
+import AuthForm from '@/components/Auth/AuthForm.vue';
 
 
 
@@ -33,12 +34,8 @@ const ModalLink = ref<InstanceType<typeof Modal> | null>(null)
             </div>
 
             <Modal fullscreen ref="ModalLink">
-                <template #header>
-                    Modalca
-                    
-                </template>
                 <template #body>
-                    Modalo4kasaffffffffffffff
+                    <AuthForm/>
                 </template>
             </Modal>
         </div>
