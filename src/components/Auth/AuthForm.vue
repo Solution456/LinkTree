@@ -16,8 +16,8 @@ import styles from './AuthForm.module.scss'
                             <div>
                                 <div class="input_el">
                                     <div class="input_container">
-                                        <input type="text">
-                                        <label for="">
+                                        <input name="test" type="text">
+                                        <label for="test">
                                             LABEL
                                         </label>
                                     </div>
@@ -65,10 +65,22 @@ import styles from './AuthForm.module.scss'
             outline: 2px solid #0000;
             outline-offset: 2px;
 
+            &::placeholder{
+                color: transparent;
+            }
+
+            &:focus,
+            &:not(:placeholder-shown){
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
             &:focus~label,
-            &:not(&:placeholder-shown)~label{
+            &:placeholder-shown ~label{
                 transform: scale(.85) translateY(-.75rem) translateX(.15rem);
             }
+
+
 
         }
 
