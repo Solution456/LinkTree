@@ -12,5 +12,21 @@
     &_title{
         margin-bottom: 2rem;
     }
+
+    &_footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a{
+            text-decoration: underline;
+            color: $purple-prim;
+            cursor: pointer;
+            
+            &:hover{
+                color: $purple-prim-hover;
+            }
+        }
+    }
 }
 

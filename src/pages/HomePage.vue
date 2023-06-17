@@ -1,14 +1,23 @@
 <script setup lang="ts">
+
+import { ref } from 'vue';
+
 import Button from '@/components/public/Button/Button.vue';
 import LinkCard from '@/components/Link/Card.vue'
 import Grid from '@/components/public/Grid/Grid.vue';
 import Modal from '@/components/public/Modal/Modal.vue';
-import { ref } from 'vue';
 import AuthForm from '@/components/Auth/AuthForm.vue';
 
+import type { typeState } from '@/components/Auth/AuthForm.vue';
 
 
 const ModalLink = ref<InstanceType<typeof Modal> | null>(null)
+
+const authFormState = ref<typeState>('login')
+
+const updateAuthState = (value:typeState) => {
+    authFormState.value = value
+}
 
 
 </script>
@@ -35,7 +44,7 @@ const ModalLink = ref<InstanceType<typeof Modal> | null>(null)
 
             <Modal fullscreen ref="ModalLink">
                 <template #body>
-                    <AuthForm/>
+                    <AuthForm @update-state="updateAuthState" :state="authFormState"/>
                 </template>
             </Modal>
         </div>
