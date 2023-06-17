@@ -1,0 +1,73 @@
+@import '/src/assets/styles/variables';
+
+.input {
+
+
+    &:hover {
+        --tw-shadow: inset 0 0 0 2px #e0e2d9;
+        --tw-shadow-colored: inset 0 0 0 2px $gray-hover;
+        box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);;
+    }
+
+  
+
+    display: block;
+    border-radius: $rounded;
+    transition: margin-bottom cubic-bezier(0, 0, .2, 1) 75ms;
+
+    &_el {
+        display: flex;
+        border-radius: $rounded;
+        border: solid 2px #fff0;
+
+    }
+
+    &_box {
+        position: relative;
+        flex-grow: 1;
+
+        input {
+            display: block;
+            width: 100%;
+            border: none;
+            border-radius: $rounded;
+            background-color: $bg-light;
+            padding: 1rem;
+            outline: 2px solid #0000;
+            outline-offset: 2px;
+            height: 3rem;
+            
+            padding-top: 2rem;
+
+
+            &::placeholder {
+                color: transparent;
+            }
+
+         
+            
+            &:focus + label,
+            &:valid + label
+            {
+                transform: scale(.85) translateY(-.75rem) translateX(0);
+                
+            }
+
+
+        }
+
+        label {
+            text-transform: capitalize;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: absolute;
+            top: 13px;
+            left: 1rem;
+            max-width: calc(100% - 50px);
+            pointer-events: none;
+            transform: scale(1) translateY(0) translateX(0);
+            transition: all cubic-bezier(.4, 0, .2, 1) .15s;
+            color: $text-gray500;
+        }
+    }
+}
