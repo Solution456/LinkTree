@@ -42,7 +42,7 @@ const updateAuthState = (value:typeState) => {
                 </Grid>
             </div>
 
-            <Modal fullscreen ref="ModalLink">
+            <Modal transition="vodal-zoom" ref="ModalLink">
                 <template #body>
                     <AuthForm @update-state="updateAuthState" :state="authFormState"/>
                 </template>
