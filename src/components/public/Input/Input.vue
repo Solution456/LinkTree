@@ -34,7 +34,7 @@ const inputHandler = (event: Event) => {
         <div :class="styles.input_el">
             <div :class="styles.input_box">
                 <input @input="inputHandler"  :required="props.required" :id="props.id" :name="props.name" :type="props.type">
-                <label for="test">
+                <label :for="props.id">
                     {{props.label}}
                 </label>
             </div>
