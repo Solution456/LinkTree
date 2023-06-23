@@ -27,7 +27,9 @@
 
       // Sub Locations
       "@/*":["*"],
-      "@/components/*": ["components/*"]
+      "@/components/*": ["components/*"],
+      "@/stores/*": ["stores/*"],
+      "@/composables/*": ["composables/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
