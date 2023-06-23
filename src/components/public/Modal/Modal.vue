@@ -8,8 +8,9 @@ import { ref } from 'vue';
 
 interface ModalProps {
     fullscreen?: boolean
-    transition?: 'default' | 'bounce' | 'zoom'
+    transition?: 'default' | 'bounce'
 }
+
 
 const props = withDefaults(defineProps<ModalProps>(), {
     fullscreen: false,
@@ -89,28 +90,8 @@ defineExpose({
     opacity: 0;
 }
 
-.zoom-enter-active .modal__inner {
-    -webkit-animation: vodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
-    animation: vodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
-}
-.zoom-leave-active .modal__inner{
-    -webkit-animation: vodal-zoom-leave both;
-    animation: vodal-zoom-leave both;
-}
 
-@keyframes zoom-enter {
-    from {
-        -webkit-transform: scale3d(.3, .3, .3);
-        transform: scale3d(.3, .3, .3);
-    }
-}
 
-@keyframes zoom-leave {
-    to {
-        -webkit-transform: scale3d(.3, .3, .3);
-        transform: scale3d(.3, .3, .3);
-    }
-}
 
 @keyframes bounce-in {
     0% {
