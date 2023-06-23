@@ -42,7 +42,7 @@ const updateAuthState = (value:typeState) => {
                 </Grid>
             </div>
 
-            <Modal transition="vodal-zoom" ref="ModalLink">
+            <Modal transition='bounce' ref="ModalLink">
                 <template #body>
                     <AuthForm @update-state="updateAuthState" :state="authFormState"/>
                 </template>

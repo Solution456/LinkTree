@@ -8,7 +8,7 @@ import { ref } from 'vue';
 
 interface ModalProps {
     fullscreen?: boolean
-    transition?: 'default' | 'bounce' | 'vodal-zoom'
+    transition?: 'default' | 'bounce' | 'zoom'
 }
 
 const props = withDefaults(defineProps<ModalProps>(), {
@@ -41,7 +41,7 @@ defineExpose({
             isModalShown ? styles.modal_show : ','
             ]
             ">
-                <div @click.stop :class="styles.modal__inner">
+                <div @click.stop class="modal__inner" :class="styles.modal__inner">
                     <div :class="styles.card">
                         <div :class="styles.card__inner">
                             <div :class="styles.card__header">
@@ -68,42 +68,62 @@ defineExpose({
 
 
 <style scoped>
-@-webkit-keyframes vodal-zoom-enter {
-    from {
-        -webkit-transform: scale3d(.3, .3, .3);
-        transform: scale3d(.3, .3, .3);
-    }
+.bounce-enter-active .modal__inner {
+    animation: bounce-in 0.5s;
 }
 
-@keyframes vodal-zoom-enter {
-    from {
-        -webkit-transform: scale3d(.3, .3, .3);
-        transform: scale3d(.3, .3, .3);
-    }
+.bounce-leave-active .modal__inner {
+    animation: bounce-in 0.5s reverse;
 }
 
-.vodal-zoom-enter-active .modal__inner{
+
+
+.default-enter-active .modal__inner,
+.default-leave-active .modal__inner {
+    transition: all 0.3s ease-in-out;
+}
+
+.default-enter-from .modal__inner,
+.default-leave-to .modal__inner {
+    transform: translateX(30px);
+    opacity: 0;
+}
+
+.zoom-enter-active .modal__inner {
     -webkit-animation: vodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
     animation: vodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
-
-@-webkit-keyframes vodal-zoom-leave {
-    to {
-        -webkit-transform: scale3d(.3, .3, .3);
-        transform: scale3d(.3, .3, .3);
-    }
-}
-
-@keyframes vodal-zoom-leave {
-    to {
-        -webkit-transform: scale3d(.3, .3, .3);
-        transform: scale3d(.3, .3, .3);
-    }
-}
-
-.vodal-zoom-leave-active .modal__inner{
+.zoom-leave-active .modal__inner{
     -webkit-animation: vodal-zoom-leave both;
     animation: vodal-zoom-leave both;
+}
+
+@keyframes zoom-enter {
+    from {
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+}
+
+@keyframes zoom-leave {
+    to {
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 </style>
 
