@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { ref } from 'vue';
+import {ref } from 'vue';
 
 import Button from '@/components/public/Button/Button.vue';
 import LinkCard from '@/components/Link/Card.vue'
@@ -9,8 +9,13 @@ import Modal from '@/components/public/Modal/Modal.vue';
 import AuthForm from '@/components/Auth/AuthForm.vue';
 import LinkForm from '@/components/Link/Form/LinkForm.vue';
 
+// import useAuthUser from '@/composables/user';
+
+
 import type { typeState } from '@/components/Auth/AuthForm.vue';
 
+
+// const {getSession, updateSession} = useAuthUser()
 
 const ModalLink = ref<InstanceType<typeof Modal> | null>(null)
 const ModalLinkForm = ref<InstanceType<typeof Modal> | null>(null)
@@ -21,6 +26,7 @@ const authFormState = ref<typeState>('login')
 const updateAuthState = (value: typeState) => {
     authFormState.value = value
 }
+
 
 
 </script>

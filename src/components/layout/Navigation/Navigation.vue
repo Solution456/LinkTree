@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import {storeToRefs} from 'pinia'
+
 import { HomeIcon, LinkIcon, EllipsisHorizontalCircleIcon } from "@heroicons/vue/24/outline";
+import Button from "@/components/public/Button/Button.vue";
+
+
+import { useUserStore } from "@/stores/userStore";
+import useAuthUser from "@/composables/user";
 
 import styles from "./Navigation.module.scss"
+
+
+const {isAuth} = storeToRefs(useUserStore())
+const {userSignOut} = useAuthUser()
 
 const NAV_ITEMS = [
     {
@@ -35,6 +46,11 @@ const NAV_ITEMS = [
                     <component style="height: 24px; width: 24px;" :is="route.icon"/>
                     <p class="sub-title-1">{{ route.name }}</p>
                 </router-link>
+            </li>
+            <li v-if="isAuth">
+                <Button @click="userSignOut" >
+                    Выход
+                </Button>
             </li>
         </ul>
     </nav>

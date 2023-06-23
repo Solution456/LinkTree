@@ -6,7 +6,10 @@ import Input from '@/components/public/Input/Input.vue';
 import Button from '@/components/public/Button/Button.vue';
 
 
+import useAuthUser from '@/composables/user';
+
 import styles from './AuthForm.module.scss'
+
 
 
 export type typeState = 'login' | 'register'
@@ -20,11 +23,21 @@ defineEmits<{
     (e: 'updateState', value: typeState): void
 }>()
 
+const {userSignIn, userSignUp} = useAuthUser()
+
 const formValue = ref({
     email:'',
     password:'',
 })
 
+
+const handleSignIn = async ()=> {
+    await userSignIn(formValue.value.email,formValue.value.password)
+}
+
+const handleSignUp = async ()=> {
+    await userSignUp(formValue.value.email,formValue.value.password)
+}
 const disabledState = computed(() => {
     return Boolean(formValue.value.email && formValue.value.password)
 })
@@ -38,7 +51,7 @@ const disabledState = computed(() => {
                 <div :class="styles.auth_title">
                     <h1 class="title-2">Log in to your Linktree</h1>
                 </div>
-                <form class="auth_form">
+                <form @submit.prevent="handleSignIn" class="auth_form">
                     <div class="mb-2">
                         <Input name="email" id="1" label="email" v-model="formValue.email"/>
                     </div>
@@ -63,7 +76,7 @@ const disabledState = computed(() => {
                 <div :class="styles.auth_title">
                     <h1 class="title-2">Create your account</h1>
                 </div>
-                <form class="auth_form">
+                <form @submit.prevent="handleSignUp" class="auth_form">
                     <div class="mb-2">
                         <Input name="email" id="1" label="email" v-model="formValue.email"/>
                     </div>
