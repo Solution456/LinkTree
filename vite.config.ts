@@ -12,6 +12,7 @@ export default defineConfig({
       '@components': resolve(__dirname,"src/components"),
       '@stores': resolve(__dirname,"src/stores"),
       '@composables': resolve(__dirname,"src/composables"),
+      '@types': resolve(__dirname,"/src/@types")
     }
   }
 })

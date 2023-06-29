@@ -1,0 +1,23 @@
+@import '/src/assets/styles/variables.scss';
+@import '/src/assets/styles/breakpoints';
+
+.linkDetails {
+    padding: 1rem 2rem;
+
+    &_head{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 1rem;
+    }
+
+    &_content{
+        margin-top: 2rem;
+
+        @include md-u{
+            margin-top: 1rem;
+        }
+        
+    }
+}
+

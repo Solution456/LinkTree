@@ -4,6 +4,15 @@ import {EllipsisVerticalIcon} from "@heroicons/vue/24/outline"
 import styles from './Card.module.scss'
 
 
+import type { linkItem } from "@/@types/types";
+
+interface linkCardProps {
+    link: linkItem
+}
+
+defineProps<linkCardProps>()
+
+
 
 </script>
 
@@ -14,12 +23,11 @@ import styles from './Card.module.scss'
         </div>
         <div :class="styles.LinkCard_main">
             <div :class="styles.LinkCard_main__top">
-                <div class="title-1">World tour - tix on sale now</div>
-                <div>Butt</div>
+                <div class="title-1">{{link.title}}</div>
             </div>
             <div :class="styles.LinkCard_main__link">
-                <a class="sub-title-1" href="#">
-                    https://dribbble.com/shots/18797894-Linktree-Mobile-App-Links
+                <a class="sub-title-1" :href="link.path" target="_blank">
+                    {{link.path}}
                 </a>
             </div>
         </div>
