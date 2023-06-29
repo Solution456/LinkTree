@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia'
 
-import { HomeIcon, LinkIcon, EllipsisHorizontalCircleIcon } from "@heroicons/vue/24/outline";
+import { RectangleGroupIcon, LinkIcon, EllipsisHorizontalCircleIcon } from "@heroicons/vue/24/outline";
 import Button from "@/components/public/Button/Button.vue";
 
 
@@ -16,16 +16,15 @@ const {userSignOut} = useAuthUser()
 
 const NAV_ITEMS = [
     {
-        path:'/',
-        name:'home',
-        icon:HomeIcon,
-        
-    },
-    {
         path:'/links',
         name:'links',
         icon:LinkIcon,
         
+    },
+    {
+        path:'/appearance',
+        name:'appearance',
+        icon: RectangleGroupIcon
     },
     {
         path:'/more',

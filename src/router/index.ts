@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { layout } from '@/layouts'
 
 const homePage = () => import('@/pages/HomePage.vue')
+const linkPage = () => import('@/pages/LinkPage.vue')
 
 const router = createRouter({
     history: createWebHistory(),
@@ -11,8 +12,15 @@ const router = createRouter({
             path: '',
             name: 'Home',
             component: homePage,
-            meta: {layout: layout.Base}
-        }
+            meta: { layout: layout.Landing }
+        },
+
+        {
+            path: '/links',
+            name: 'Links',
+            component: linkPage,
+            meta: { layout: layout.Base}
+        },
     ]
 })
 
