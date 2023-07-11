@@ -1,19 +1,18 @@
+<script setup lang="ts">
+import Header from '@/components/layout/Header/Header.vue'
+
+</script>
+
 <template>
 
-    <header>
-
-    </header>
+    
 
     <div class="landing">
+        <Header/>
         <slot/>
     </div>
 
 </template>
 
-<script setup lang="ts">
 
-</script>
 
-<style scoped>
-
-</style>
