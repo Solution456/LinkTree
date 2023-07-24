@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import styles from './Input.module.scss'
 
 type InputType = 'text' | 'password' | 'file'
 
@@ -30,9 +29,9 @@ const inputHandler = (event: Event) => {
 
 
 <template>
-    <div :class="styles.input">
-        <div :class="styles.input_el">
-            <div :class="styles.input_box">
+    <div :class="$style.input">
+        <div :class="$style.input_el">
+            <div :class="$style.input_box">
                 <input @input="inputHandler"  :required="props.required" :id="props.id" :name="props.name" :type="props.type">
                 <label :for="props.id">
                     {{props.label}}
@@ -42,5 +41,9 @@ const inputHandler = (event: Event) => {
         <div class="input_error"></div>
     </div>
 </template>
+
+<style scoped module lang="scss">
+@import './Input.module.scss';
+</style>
 
 

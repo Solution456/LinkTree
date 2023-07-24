@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import styles from './Grid.module.scss'
+
 </script>
 
 <template>
-    <div :class="styles.grid">
+    <div :class="$style.grid">
         <slot/>
     </div>
 </template>
+
+
+<style scoped module lang="scss">
+@import './Grid.module.scss';
+</style>
 

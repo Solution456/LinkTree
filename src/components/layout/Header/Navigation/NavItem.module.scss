@@ -1,0 +1,13 @@
+.nav__item {
+    min-width: 0px;
+    position: relative;
+
+    &__link {
+        text-decoration: none;
+    }
+
+    &__box {
+        min-width: 0px;
+        padding: 0.75rem 1rem;
+    }
+}

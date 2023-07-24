@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import styles from "./Button.module.scss"
-
 type ButtonType = 'button' | 'submit'
 
 interface ButtonProps {
@@ -17,8 +15,8 @@ const props = withDefaults(defineProps<ButtonProps>(),{
 </script>
 
 <template>
-    <button :type="props.type" :disabled="disabled" :class="styles.button">
-        <div :class="styles.button_content">
+    <button :type="props.type" :disabled="disabled" :class="$style.button">
+        <div :class="$style.button_content">
             <slot/>
         </div>
     </button>
@@ -26,8 +24,6 @@ const props = withDefaults(defineProps<ButtonProps>(),{
 
 
 
-<style scoped>
-button{
-    cursor: pointer;
-}
+<style scoped module lang="scss">
+@import './Button.module.scss';
 </style>

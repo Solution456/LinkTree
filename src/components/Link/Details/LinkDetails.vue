@@ -3,9 +3,6 @@ import { ref } from 'vue';
 
 import { TrashIcon } from '@heroicons/vue/24/outline';
 
-import styles from './LinkDetails.module.scss'
-
-
 import IconButton from '@/components/public/Button/IconButton.vue';
 import Switch from '@/components/public/Switch/Switch.vue'
 
@@ -25,8 +22,8 @@ const tempStatus = ref(false)
 
 
 <template>
-    <div :class="styles.linkDetails">
-        <div :class="styles.linkDetails_head">
+    <div :class="$style.linkDetails">
+        <div :class="$style.linkDetails_head">
             <IconButton>
                 <template #icon>
                     <TrashIcon/>
@@ -36,7 +33,7 @@ const tempStatus = ref(false)
                 <Switch v-model:model-value="tempStatus" :id="link.id"/>
             </div>
         </div>
-        <div :class="styles.linkDetails_content">
+        <div :class="$style.linkDetails_content">
             <h2 class="title-2 mb-4">{{ link.title }}</h2>
             <p class="sub-title-1">
                 <a :href="link.path" target="_blank">{{ link.path }}</a>
@@ -44,6 +41,11 @@ const tempStatus = ref(false)
         </div>
     </div>
 </template>
+
+
+<style scoped module lang="scss">
+@import './LinkDetails.module.scss';
+</style>
 
 
 

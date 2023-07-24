@@ -4,7 +4,6 @@ import {computed, ref} from 'vue'
 import Input from '@/components/public/Input/Input.vue'
 import Button from '@/components/public/Button/Button.vue';
 
-import styles from './LinkForm.module.scss'
 
 const formValue = ref({
     title:'',
@@ -20,7 +19,7 @@ const disabledState = computed(() => {
 
 
 <template>
-    <div :class="styles.LinkForm">
+    <div :class="$style.LinkForm">
         <div class="LinkForm_inner">
             <div class="LinkForm_title">
                 <h1 class="title-2">
@@ -45,5 +44,10 @@ const disabledState = computed(() => {
         </div>
     </div>
 </template>
+
+
+<style scoped module lang="scss">
+@import './LinkForm.module.scss';
+</style>
 
 

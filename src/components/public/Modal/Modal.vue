@@ -2,7 +2,6 @@
 
 import { ChevronLeftIcon } from '@heroicons/vue/24/outline';
 
-import styles from './Modal.module.scss'
 import { ref } from 'vue';
 
 
@@ -38,15 +37,15 @@ defineExpose({
 <template>
     <Teleport to="body">
         <Transition :name="props.transition">
-            <div @click="openClose" v-if="isModalShown" :class="[styles.modal,
-            isModalShown ? styles.modal_show : ','
+            <div @click="openClose" v-if="isModalShown" :class="[$style.modal,
+            isModalShown ? $style.modal_show : ','
             ]
             ">
-                <div @click.stop class="modal__inner" :class="styles.modal__inner">
-                    <div :class="styles.card">
-                        <div :class="styles.card__inner">
-                            <div :class="styles.card__header">
-                                <button @click="openClose" :class="styles.modal__close">
+                <div @click.stop class="modal__inner" :class="$style.modal__inner">
+                    <div :class="$style.card">
+                        <div :class="$style.card__inner">
+                            <div :class="$style.card__header">
+                                <button @click="openClose" :class="$style.modal__close">
                                     <ChevronLeftIcon />
                                 </button>
                                 <h5>
@@ -56,7 +55,7 @@ defineExpose({
 
                             </div>
 
-                            <div :class="styles.card__body">
+                            <div :class="$style.card__body">
                                 <slot name="body" />
                             </div>
                         </div>
@@ -66,6 +65,11 @@ defineExpose({
         </Transition>
     </Teleport>
 </template>
+
+
+<style scoped module lang="scss">
+@import './Modal.module.scss';
+</style>
 
 
 <style scoped>
