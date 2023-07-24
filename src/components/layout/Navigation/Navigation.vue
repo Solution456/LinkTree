@@ -7,10 +7,8 @@ import Button from "@/components/public/Button/Button.vue";
 
 import { useUserStore } from "@/stores/userStore";
 import useAuthUser from "@/composables/user";
+import { useRouter } from 'vue-router';
 
-
-const {isAuth} = storeToRefs(useUserStore())
-const {userSignOut} = useAuthUser()
 
 const NAV_ITEMS = [
     {
@@ -32,6 +30,22 @@ const NAV_ITEMS = [
     }
 ]
 
+const {isAuth} = storeToRefs(useUserStore())
+const {userSignOut} = useAuthUser()
+const router = useRouter()
+
+const handleLogOut = async () => {
+    await userSignOut()
+
+    router.push({
+        name: 'Auth'
+    })
+}
+
+
+
+
+
 
 </script>
 
@@ -45,7 +59,7 @@ const NAV_ITEMS = [
                 </router-link>
             </li>
             <li v-if="isAuth">
-                <Button @click="userSignOut" >
+                <Button @click="handleLogOut" >
                     Выход
                 </Button>
             </li>

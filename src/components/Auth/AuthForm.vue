@@ -9,7 +9,7 @@ import Button from '@/components/public/Button/Button.vue';
 import useAuthUser from '@/composables/user';
 
 import styles from './AuthForm.module.scss'
-
+import { useRouter } from 'vue-router';
 
 
 export type typeState = 'login' | 'register'
@@ -23,7 +23,9 @@ const emit = defineEmits<{
     (e: 'updateState', value: typeState): void
 }>()
 
-const {userSignIn, userSignUp} = useAuthUser()
+const router = useRouter()
+const {userSignIn, userSignUp, errors} = useAuthUser()
+
 
 const formValue = ref({
     email:'',
@@ -33,6 +35,11 @@ const formValue = ref({
 
 const handleSignIn = async ()=> {
     await userSignIn(formValue.value.email,formValue.value.password)
+    if(!errors.value) {
+        router.push({
+            name: 'Links'
+        })
+    }
 }
 
 const handleSignUp = async ()=> {
