@@ -21,7 +21,6 @@ interface authFormProps {
 const props = defineProps<authFormProps>()
 const emit = defineEmits<{
     (e: 'updateState', value: typeState): void
-    (e: 'close'): void
 }>()
 
 const {userSignIn, userSignUp} = useAuthUser()
@@ -34,7 +33,6 @@ const formValue = ref({
 
 const handleSignIn = async ()=> {
     await userSignIn(formValue.value.email,formValue.value.password)
-    emit('close')
 }
 
 const handleSignUp = async ()=> {

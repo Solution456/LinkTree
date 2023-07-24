@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import { layout } from '@/layouts'
 
-const homePage = () => import('@/pages/HomePage.vue')
+const authPage = () => import('@/pages/AuthPage.vue')
 const linkPage = () => import('@/pages/LinkPage.vue')
 
 const router = createRouter({
@@ -10,9 +10,9 @@ const router = createRouter({
     routes: [
         {
             path: '',
-            name: 'Home',
-            component: homePage,
-            meta: { layout: layout.Landing }
+            name: 'Auth',
+            component: authPage,
+            meta: { layout: layout.Auth }
         },
 
         {

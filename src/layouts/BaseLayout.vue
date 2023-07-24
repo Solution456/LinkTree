@@ -8,9 +8,9 @@ import Navigation from '@/components/layout/Navigation/Navigation.vue';
         
     </header>
 
-    <div class="base">
+    <main class="base">
         <slot/>
-    </div>
+    </main>
 
     <Navigation/>
 </template>

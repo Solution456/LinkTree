@@ -7,13 +7,10 @@ import Button from '@/components/public/Button/Button.vue';
 import LinkCard from '@/components/Link/Card.vue'
 import Grid from '@/components/public/Grid/Grid.vue';
 import Modal from '@/components/public/Modal/Modal.vue';
-import AuthForm from '@/components/Auth/AuthForm.vue';
 import LinkForm from '@/components/Link/Form/LinkForm.vue';
 import LinkDetails from '@/components/Link/Details/LinkDetails.vue'
 
 
-
-import type { typeState } from '@/components/Auth/AuthForm.vue';
 import type { linkItem } from '@/@types/types';
 
 
@@ -26,7 +23,6 @@ const ModalLinkDetails = ref<InstanceType<typeof Modal> | null>(null)
 
 const selectedLink = ref<linkItem | null>(null)
 
-const authFormState = ref<typeState>('login')
 
 
 const tempData: linkItem[] = [
@@ -47,9 +43,6 @@ const tempData: linkItem[] = [
     }
 ]
 
-const updateAuthState = (value: typeState) => {
-    authFormState.value = value
-}
 
 
 
@@ -105,12 +98,6 @@ const setSelectedLink = (link:linkItem) => {
             <Modal ref="ModalLinkForm">
                 <template #body>
                     <LinkForm />
-                </template>
-            </Modal>
-
-            <Modal transition='bounce' ref="ModalAuth">
-                <template #body>
-                    <AuthForm @close="ModalAuth?.openClose" @update-state="updateAuthState" :state="authFormState" />
                 </template>
             </Modal>
         </div>
