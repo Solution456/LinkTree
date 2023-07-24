@@ -4,21 +4,32 @@ import Navigation from '@/components/layout/Navigation/Navigation.vue';
 </script>
 
 <template>
-    <header>
-        
-    </header>
+    <div class="layout">
+        <header>
 
-    <main class="base">
-        <slot/>
-    </main>
+        </header>
 
-    <Navigation/>
+        <main class="base">
+            <slot />
+        </main>
+
+        <Navigation />
+    </div>
 </template>
 
 <style scoped lang="scss"> 
-.base{
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-}
+@import '@/assets/styles/variables.scss';
+.layout {
+     min-height: 100vh;
+     display: flex;
+     flex-direction: column;
+
+     background-color: $bg-light;
+ }
+
+ .base {
+     display: flex;
+     flex-grow: 1;
+     flex-direction: column;
+ }
 </style>
