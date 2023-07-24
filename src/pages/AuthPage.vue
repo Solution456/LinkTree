@@ -35,7 +35,8 @@ const setAuthState = (s:typeState):void => {
 .authPage{
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 1.5rem 2.5rem;
+
 
     @include md-u{
         width: 650px;

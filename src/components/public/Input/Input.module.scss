@@ -24,14 +24,16 @@
         box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     }
 
-    &_el {
+    &__el {
         display: flex;
         border-radius: $rounded;
         border: solid 2px #fff0;
 
     }
 
-    &_box {
+
+
+    &__box {
         position: relative;
         flex-grow: 1;
 
@@ -78,4 +80,11 @@
             color: $text-gray500;
         }
     }
+
+}
+.input__error {
+    color: $warn;
+    padding: .25rem .75rem;
+    background-color: $warn-opacity;
+    border-radius: $rounded;
 }

@@ -7,9 +7,11 @@ import Button from '@/components/public/Button/Button.vue';
 
 
 import useAuthUser from '@/composables/user';
+import { required, useValidator, email } from '@/composables/Validate';
 
 import styles from './AuthForm.module.scss'
 import { useRouter } from 'vue-router';
+
 
 
 export type typeState = 'login' | 'register'
@@ -24,31 +26,50 @@ const emit = defineEmits<{
 }>()
 
 const router = useRouter()
-const {userSignIn, userSignUp, errors} = useAuthUser()
+const { userSignIn, userSignUp, errors } = useAuthUser()
 
 
 const formValue = ref({
-    email:'',
-    password:'',
+    email: '',
+    password: '',
 })
 
 
-const handleSignIn = async ()=> {
-    await userSignIn(formValue.value.email,formValue.value.password)
-    if(!errors.value) {
-        router.push({
-            name: 'Links'
-        })
-    }
-}
 
-const handleSignUp = async ()=> {
-    await userSignUp(formValue.value.email,formValue.value.password)
-    emit('updateState', 'login')
-}
 const disabledState = computed(() => {
     return Boolean(formValue.value.email && formValue.value.password)
 })
+
+const rules = computed(() => {
+    return {
+        email: [required, email],
+        password: required,
+    }
+})
+const { error, isValid } = useValidator(formValue, rules)
+
+const handleSignIn = async () => {
+    if (isValid()) {
+        await userSignIn(formValue.value.email, formValue.value.password)
+        if (!errors.value) {
+            router.push({
+                name: 'Links'
+            })
+        }
+    }
+
+}
+
+const handleSignUp = async () => {
+    if (isValid()) {
+        await userSignUp(formValue.value.email, formValue.value.password)
+        formValue.value = {
+            email: '',
+            password: ''
+        }
+        emit('updateState', 'login')
+    }
+}
 
 </script>
 
@@ -61,10 +82,11 @@ const disabledState = computed(() => {
                 </div>
                 <form @submit.prevent="handleSignIn" class="auth_form">
                     <div class="mb-2">
-                        <Input name="email" id="1" label="email" v-model="formValue.email"/>
+                        <Input :error="error('email')" name="email" id="1" label="email" v-model="formValue.email" />
                     </div>
                     <div class="mb-4">
-                        <Input name="password" id="2" label="password" v-model="formValue.password" type="password"/>
+                        <Input name="password" :error="error('password')" id="2" label="password"
+                            v-model="formValue.password" type="password" />
                     </div>
                     <div class="mb-6">
                         <Button :disabled="!disabledState" type="submit">
@@ -86,17 +108,20 @@ const disabledState = computed(() => {
                 </div>
                 <form @submit.prevent="handleSignUp" class="auth_form">
                     <div class="mb-2">
-                        <Input name="email" id="1" label="email" v-model="formValue.email"/>
+                        <Input :error="error('email')" name="email" id="1" label="email" v-model="formValue.email" />
                     </div>
                     <div class="mb-8">
-                        <Input name="password" id="2" label="password" v-model="formValue.password" type="password"/>
+                        <Input :error="error('password')" name="password" id="2" label="password"
+                            v-model="formValue.password" type="password" />
                     </div>
                     <div class="mb-8">
                         <p class="sub-title-1 ">
-                            By clicking <span class="title-1">Create account</span>, you agree to Linktree's Terms and Conditions and confirm you have read our Privacy Notice. You may receive offers, news and updates from us.
+                            By clicking <span class="title-1">Create account</span>, you agree to Linktree's Terms and
+                            Conditions and confirm you have read our Privacy Notice. You may receive offers, news and
+                            updates from us.
                         </p>
                     </div>
-                    
+
                     <div class="mb-6">
                         <Button :disabled="!disabledState" type="submit">
                             Create account

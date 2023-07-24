@@ -847,7 +847,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueuse/core@npm:^10.2.1":
+"@vueuse/core@npm:10.2.1, @vueuse/core@npm:^10.2.1":
   version: 10.2.1
   resolution: "@vueuse/core@npm:10.2.1"
   dependencies:
@@ -856,6 +856,55 @@ __metadata:
     "@vueuse/shared": 10.2.1
     vue-demi: ">=0.14.5"
   checksum: 1a7a7ad8372a2ff87ceddee2663a29a911dcd8a1a40b0e63436bc3b0f0786598f70e40e02e69d3cacfb634e35fdcd98136e049431a73516109ff062d8004cd54
+  languageName: node
+  linkType: hard
+
+"@vueuse/integrations@npm:^10.2.1":
+  version: 10.2.1
+  resolution: "@vueuse/integrations@npm:10.2.1"
+  dependencies:
+    "@vueuse/core": 10.2.1
+    "@vueuse/shared": 10.2.1
+    vue-demi: ">=0.14.5"
+  peerDependencies:
+    async-validator: "*"
+    axios: "*"
+    change-case: "*"
+    drauu: "*"
+    focus-trap: "*"
+    fuse.js: "*"
+    idb-keyval: "*"
+    jwt-decode: "*"
+    nprogress: "*"
+    qrcode: "*"
+    sortablejs: "*"
+    universal-cookie: "*"
+  peerDependenciesMeta:
+    async-validator:
+      optional: true
+    axios:
+      optional: true
+    change-case:
+      optional: true
+    drauu:
+      optional: true
+    focus-trap:
+      optional: true
+    fuse.js:
+      optional: true
+    idb-keyval:
+      optional: true
+    jwt-decode:
+      optional: true
+    nprogress:
+      optional: true
+    qrcode:
+      optional: true
+    sortablejs:
+      optional: true
+    universal-cookie:
+      optional: true
+  checksum: 6f7258e4f52f70f30e13bfb5d40d1dd8b48e23b94d338cb2b6e6d3fa8a3dc4e3a71a8677af4228548086238442e9737305dc7c855c2e8818b6bab39bea9b994c
   languageName: node
   linkType: hard
 
@@ -4821,6 +4870,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.1.0
     "@vue/eslint-config-typescript": ^11.0.3
     "@vueuse/core": ^10.2.1
+    "@vueuse/integrations": ^10.2.1
     async-validator: ^4.2.5
     eslint: ^8.41.0
     eslint-config-prettier: ^8.8.0

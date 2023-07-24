@@ -21,7 +21,7 @@
 
 .auth {
     display: flex;
-
+    position: relative;
 
     &__container {
         position: relative;
@@ -30,9 +30,6 @@
         min-height: 100vh;
         justify-content: center;
         align-items: center;
-        max-width: 1440px;
-        margin: 0 auto;
-
         @include md-u{
             padding: 0 20px;
         }
