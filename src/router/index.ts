@@ -9,6 +9,7 @@ import { getCookieToken } from '@/composables/Auth'
 
 const authPage = () => import('@/pages/AuthPage.vue')
 const linkPage = () => import('@/pages/LinkPage.vue')
+const appearancePage = () => import('@/pages/AppearancePage.vue')
 
 const router = createRouter({
     history: createWebHistory(),
@@ -24,6 +25,13 @@ const router = createRouter({
             path: '/links',
             name: 'Links',
             component: linkPage,
+            meta: { layout: layout.Base, reqAuth: true}
+        },
+
+        {
+            path: '/appearance',
+            name: 'Appearance',
+            component: appearancePage,
             meta: { layout: layout.Base, reqAuth: true}
         },
     ]
