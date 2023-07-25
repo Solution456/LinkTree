@@ -2,7 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import { layout } from '@/layouts'
 
-import { authGuard } from '@/utils/authGuard'
+// import { useUserStore } from "@/stores/userStore";
+// import {storeToRefs} from 'pinia'
+import { getCookieToken } from '@/composables/Auth'
+
 
 const authPage = () => import('@/pages/AuthPage.vue')
 const linkPage = () => import('@/pages/LinkPage.vue')
@@ -11,7 +14,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
-            path: '',
+            path: '/',
             name: 'Auth',
             component: authPage,
             meta: { layout: layout.Auth }
@@ -28,10 +31,13 @@ const router = createRouter({
 
 
 
-router.beforeEach(async (to, from, next) => {
-    if (to.matched.some(r => r.meta.reqAuth)) {
-        authGuard(to, from, next)
-    } else {
+router.beforeEach((to, from, next) => {
+    
+    if (to.name !== 'Auth' && !getCookieToken()) {
+        next({name: 'Auth'})
+    } else if(to.name === 'Auth' && getCookieToken()){
+        next({name:'Links'})
+    }else{
         next()
     }
     

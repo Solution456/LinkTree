@@ -1,5 +1,6 @@
 import { supabase } from "@/http/supabase";
 import { useUserStore } from "@/stores/userStore";
+import { useAuth, deleteCookieToken } from "./Auth";
 
 import { AuthError, Session } from "@supabase/supabase-js";
 
@@ -10,6 +11,7 @@ import { ref } from "vue";
 
 
 export default function useAuthUser() {
+    const {login} = useAuth()
     const userStore = useUserStore()
     const loading = ref(false)
     const errors = ref<AuthError | null>(null)
@@ -38,11 +40,13 @@ export default function useAuthUser() {
     const userSignIn = async (email: string, password: string) => {
         try {
             loading.value = true
-            const { error } = await supabase.auth.signInWithPassword({
+            const { error, data } = await supabase.auth.signInWithPassword({
                 email,
                 password
             })
             errors.value = error
+            if(data.session?.access_token)
+                login(data.session.access_token)
         } catch (error) {
             if (error instanceof Error) {
                 alert(error.message)
@@ -57,6 +61,7 @@ export default function useAuthUser() {
             loading.value = true
             const { error } = await supabase.auth.signOut()
             errors.value = error
+            deleteCookieToken()
         } catch (error) {
             if (error instanceof Error) {
                 alert(error.message)

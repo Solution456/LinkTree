@@ -1,34 +1,17 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia'
-
-import { RectangleGroupIcon, LinkIcon, EllipsisHorizontalCircleIcon } from "@heroicons/vue/24/outline";
-import Button from "@/components/public/Button/Button.vue";
+import { useRouter } from 'vue-router';
 
 
 import { useUserStore } from "@/stores/userStore";
 import useAuthUser from "@/composables/user";
-import { useRouter } from 'vue-router';
+import {NAV_ITEMS} from '@/constants'
+
+import Button from "@/components/public/Button/Button.vue";
 
 
-const NAV_ITEMS = [
-    {
-        path:'/links',
-        name:'links',
-        icon:LinkIcon,
-        
-    },
-    {
-        path:'/appearance',
-        name:'appearance',
-        icon: RectangleGroupIcon
-    },
-    {
-        path:'/more',
-        name:'more',
-        icon:EllipsisHorizontalCircleIcon
-        
-    }
-]
+
+
 
 const {isAuth} = storeToRefs(useUserStore())
 const {userSignOut} = useAuthUser()

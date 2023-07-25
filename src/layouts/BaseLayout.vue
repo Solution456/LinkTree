@@ -1,19 +1,24 @@
 <script setup lang="ts">
+import {useBreakPoints} from '@/composables/Breakpoints'
+
 import Navigation from '@/components/layout/Navigation/Navigation.vue';
+import Header from '@/components/layout/Header/Header.vue'
+
+
+
+const {mobile} = useBreakPoints()
 
 </script>
 
 <template>
     <div class="layout">
-        <header>
-
-        </header>
+        <Header v-if="!mobile"/>
 
         <main class="base">
             <slot />
         </main>
 
-        <Navigation />
+        <Navigation v-if="mobile" />
     </div>
 </template>
 

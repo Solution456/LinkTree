@@ -8,7 +8,7 @@
         <a :class="$style.nav__item__link" href="">
             <div :class="$style.nav__item__box">
                 <span>
-                    <slot/>
+                        <slot/>
                 </span>
             </div>
         </a>

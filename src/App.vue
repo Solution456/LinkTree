@@ -12,6 +12,7 @@ onMounted(() => {
     if(session.data.session?.user){
       userStore.isAuth = true
     }
+    console.log(userStore.isAuth)
     
   })
   

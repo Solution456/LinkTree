@@ -10,7 +10,6 @@ import useAuthUser from '@/composables/user';
 import { required, useValidator, email } from '@/composables/Validate';
 
 import styles from './AuthForm.module.scss'
-import { useRouter } from 'vue-router';
 
 
 
@@ -25,7 +24,7 @@ const emit = defineEmits<{
     (e: 'updateState', value: typeState): void
 }>()
 
-const router = useRouter()
+
 const { userSignIn, userSignUp, errors } = useAuthUser()
 
 
@@ -52,9 +51,7 @@ const handleSignIn = async () => {
     if (isValid()) {
         await userSignIn(formValue.value.email, formValue.value.password)
         if (!errors.value) {
-            router.push({
-                name: 'Links'
-            })
+            
         }
     }
 
