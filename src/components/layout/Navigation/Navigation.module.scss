@@ -26,11 +26,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: .875rem;
     padding: .5rem;
     border-radius: .375rem;
     text-transform: capitalize;
 
     &:hover{
         background-color: $text-gray200;
+    }
+}
+
+
+
+.active {
+    background-color: $purple-prim;
+    color: $text-white;
+
+    &:hover {
+        background-color: $purple-prim-hover;
     }
 }

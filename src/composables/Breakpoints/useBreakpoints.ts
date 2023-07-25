@@ -9,7 +9,7 @@ export const useBreakPoints = () => {
     })
 
 
-    const mobile = breakpoints.between('tablet', 'laptop')
+    const mobile = breakpoints.smaller('laptop')
     const laptop = breakpoints.between('laptop', 'desktop')
     const desktop = breakpoints.greaterOrEqual('desktop')
 

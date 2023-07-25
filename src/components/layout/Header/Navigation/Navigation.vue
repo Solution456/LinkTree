@@ -36,11 +36,7 @@ const handleLogOut = async () => {
                     <div :class="$style.nav__items_inner">
                         <a href="" class="logo"></a>
                         <div :class="$style.nav__list">
-                            <NavItem v-for="item of NAV_ITEMS" :key="item.name">
-                                <RouterLink :to="item.path">
-                                    {{item.name}}
-                                </RouterLink>
-                            </NavItem>
+                            <NavItem v-for="item of NAV_ITEMS" :key="item.name" :item="item"/>
                         </div>
                     </div>
                 </div>

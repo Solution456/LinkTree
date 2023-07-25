@@ -1,6 +1,17 @@
+@import '@/assets/styles/variables';
+
 .nav__item {
     min-width: 0px;
     position: relative;
+    border-radius: $rounded;
+
+    &:hover {
+        background-color: $gray-hover;
+    }
+
+    
+
+
 
     &__link {
         text-decoration: none;
@@ -9,9 +20,20 @@
     &__box {
         min-width: 0px;
         padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+        text-transform: capitalize;
     }
 
-    span{
-        text-transform: capitalize;
+}
+
+.active {
+    background-color: $purple-prim;
+    color: $text-white;
+
+    &:hover {
+        background-color: $purple-prim-hover;
     }
 }

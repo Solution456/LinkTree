@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {storeToRefs} from 'pinia'
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 
 import { useUserStore } from "@/stores/userStore";
@@ -8,6 +8,7 @@ import useAuthUser from "@/composables/user";
 import {NAV_ITEMS} from '@/constants'
 
 import Button from "@/components/public/Button/Button.vue";
+import { computed } from 'vue';
 
 
 
@@ -25,6 +26,11 @@ const handleLogOut = async () => {
     })
 }
 
+const route = useRoute()
+const routeName = computed(() => {
+    return  route.name?.toString().toLowerCase()
+})
+
 
 
 
@@ -36,9 +42,9 @@ const handleLogOut = async () => {
     <nav :class="$style.nav">
         <ul :class="$style.nav_items">
             <li  v-for="route of NAV_ITEMS" :key="route.path">
-                <router-link :class="$style.nav_items__link" :to="route.path">
+                <router-link :class="[$style.nav_items__link, routeName === route.name ? $style.active:'']" :to="route.path">
                     <component style="height: 24px; width: 24px;" :is="route.icon"/>
-                    <p class="sub-title-1">{{ route.name }}</p>
+                    <p :class="{'sub-title-1':!(routeName === route.name)}">{{ route.name }}</p>
                 </router-link>
             </li>
             <li v-if="isAuth">
