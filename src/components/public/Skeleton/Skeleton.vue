@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import Grid from '@/components/public/Grid/Grid.vue'
+
 interface skeletonProps {
     rows: number
     loading: boolean
@@ -17,13 +19,19 @@ const props = withDefaults(defineProps<skeletonProps>(), {
 
 <template>
     <template v-if="props.loading">
-        <div :class="[props.bg ? $style.skeleton: '']" v-bind="$attrs">
-            <template v-for="i in props.count" :key="i">
+        <template v-for="i in props.count" :key="i">
+
+            <div :class="[props.bg ? $style.skeleton : '']" v-bind="$attrs">
+
+
                 <slot v-if="props.loading" :key="i" name="template">
 
                 </slot>
-            </template>
-        </div>
+
+
+
+            </div>
+        </template>
     </template>
 
     <template v-else>
@@ -37,16 +45,17 @@ const props = withDefaults(defineProps<skeletonProps>(), {
 @import '/src/assets/styles/variables';
 
 @keyframes skeleton-loading {
-    0%{
+    0% {
         background-position: 100% 50%;
     }
-    100%{
+
+    100% {
         background-position: 0% 50%;
     }
 }
 
 .skeleton {
-    background: linear-gradient(90deg,rgba(190,190,190,.2) 25%,rgba(129,129,129,.24) 37%,rgba(190,190,190,.2) 63%);
+    background: linear-gradient(90deg, rgba(190, 190, 190, .2) 25%, rgba(129, 129, 129, .24) 37%, rgba(190, 190, 190, .2) 63%);
     background-size: 400% 100%;
     padding: 1rem;
     border-radius: $rounded;

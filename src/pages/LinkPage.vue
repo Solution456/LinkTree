@@ -4,14 +4,15 @@ import { ref } from 'vue';
 import { useUserStore } from '@/stores/userStore';
 
 import Button from '@/components/public/Button/Button.vue';
-import LinkCard from '@/components/Link/Card.vue'
-import Grid from '@/components/public/Grid/Grid.vue';
 import Modal from '@/components/public/Modal/Modal.vue';
 import LinkForm from '@/components/Link/Form/LinkForm.vue';
 import LinkDetails from '@/components/Link/Details/LinkDetails.vue'
 
 
+
+
 import type { linkItem } from '@/@types/types';
+import GridList from '@/components/Link/GridList/GridList.vue';
 
 
 
@@ -84,9 +85,7 @@ const setSelectedLink = (link:linkItem) => {
             </div>
 
             <div class="links">
-                <Grid>
-                    <LinkCard v-for="link of tempData" :key="link.id" :link="link" @click="setSelectedLink(link)"/>
-                </Grid>
+                <GridList @set-selected-item="setSelectedLink" :items="tempData" :is-loading="false"/>
             </div>
 
             <Modal transition='bounce' ref="ModalLinkDetails">
