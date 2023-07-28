@@ -30,7 +30,7 @@
       "@/components/*": ["components/*"],
       "@/stores/*": ["stores/*"],
       "@/composables/*": ["composables/*"],
-      "@/@types/*":["@types/*"]
+      "@/types/*":["@types/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
