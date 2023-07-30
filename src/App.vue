@@ -9,17 +9,17 @@ const userStore = useUserStore()
 onMounted(() => {
 
   supabase.auth.getSession().then((session) => {
-    if(session.data.session?.user){
+    if (session.data.session?.user) {
       userStore.isAuth = true
+      userStore.User.id = session.data.session.user.id
     }
-    console.log(userStore.isAuth)
-    
+
   })
-  
+
   supabase.auth.onAuthStateChange((event, _session) => {
     if (event === 'SIGNED_OUT') {
       userStore.isAuth = false
-    }else if(event === 'SIGNED_IN'){
+    } else if (event === 'SIGNED_IN') {
       userStore.isAuth = true
     }
   })
@@ -27,7 +27,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <component :is="$route.meta.layout || 'div'">
-    <router-view />
-  </component>
+  <Suspense>
+    <component :is="$route.meta.layout || 'div'">
+      <router-view />
+    </component>
+  </Suspense>
 </template>

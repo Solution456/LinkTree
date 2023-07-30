@@ -25,7 +25,6 @@ export const useAuth = () => {
 
     const login = (token: string) => {
         setCookieToken(token)
-
         router.push({
             name:'Links'
         })

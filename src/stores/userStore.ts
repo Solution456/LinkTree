@@ -7,14 +7,20 @@ interface userInfo {
 }
 
 interface State {
-    UserDetails: userInfo | null,
+    User:{
+        id:string
+        UserDetails : userInfo | null
+    },
     isAuth: boolean
 }
 
 export const useUserStore = defineStore('user', {
     state: () : State => {
         return {
-            UserDetails: null,
+            User: {
+                id:'',
+                UserDetails: null
+            },
             isAuth: false
         }
     },

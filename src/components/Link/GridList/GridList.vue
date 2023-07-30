@@ -19,12 +19,6 @@ const emit = defineEmits<{
     (e: 'setSelectedItem', value: linkItem): void
 }>()
 
-
-
-
-
-
-
 </script>
 
 <template>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useUserStore } from '@/stores/userStore';
+import { useLinks, Links } from '@/composables/links';
 
 import Button from '@/components/public/Button/Button.vue';
 import Modal from '@/components/public/Modal/Modal.vue';
@@ -16,36 +17,15 @@ import GridList from '@/components/Link/GridList/GridList.vue';
 
 
 
+
 const userStore = useUserStore()
+const {fetchLinks, isLoading} = useLinks()
 
 const ModalAuth = ref<InstanceType<typeof Modal> | null>(null)
 const ModalLinkForm = ref<InstanceType<typeof Modal> | null>(null)
 const ModalLinkDetails = ref<InstanceType<typeof Modal> | null>(null)
 
 const selectedLink = ref<linkItem | null>(null)
-
-
-
-const tempData: linkItem[] = [
-    {
-        id:1,
-        path:'https://dribbble.com/shots/20378404-Linktree-Mobile-App',
-        title:'dribble LinkTree'
-    },
-    {
-        id:2,
-        path:'https://youtube.com/watch?v=8edZVkacijA&ab_channel=CURSEDEVIL',
-        title:'Playlist YT'
-    },
-    {
-        id:3,
-        path:'https://vuejs.org/',
-        title:'vuejs'
-    }
-]
-
-
-
 
 const clickAddHandle = () => {
     if (userStore.isAuth) {
@@ -65,9 +45,9 @@ const setSelectedLink = (link:linkItem) => {
 }
 
 
-
-
-
+onMounted(async () => {
+    await fetchLinks(userStore.User.id)
+})
 
 
 
@@ -85,7 +65,7 @@ const setSelectedLink = (link:linkItem) => {
             </div>
 
             <div class="links">
-                <GridList @set-selected-item="setSelectedLink" :items="tempData" :is-loading="false"/>
+                <GridList @set-selected-item="setSelectedLink" :items="Links" :is-loading="isLoading"/>
             </div>
 
             <Modal transition='bounce' ref="ModalLinkDetails">
@@ -96,7 +76,7 @@ const setSelectedLink = (link:linkItem) => {
 
             <Modal ref="ModalLinkForm">
                 <template #body>
-                    <LinkForm />
+                    <LinkForm @close-modal="ModalLinkForm?.openClose" />
                 </template>
             </Modal>
         </div>

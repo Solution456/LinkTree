@@ -2,9 +2,9 @@ import { FunctionalComponent, HTMLAttributes, VNodeProps } from "vue"
 
 
 export interface linkItem {
-    id:number
+    id: number
     title: string,
-    path: string
+    path: string,
 }
 
 export interface NavItem {
@@ -12,3 +12,10 @@ export interface NavItem {
     name: string
     icon: FunctionalComponent<HTMLAttributes & VNodeProps, {}, any>
 }
+
+export interface LinkPayload {
+    title: string,
+    path: string,
+    user_id: string
+}
+

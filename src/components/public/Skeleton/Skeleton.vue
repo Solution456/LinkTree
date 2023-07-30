@@ -1,12 +1,11 @@
 <script setup lang="ts">
 
-import Grid from '@/components/public/Grid/Grid.vue'
 
 interface skeletonProps {
-    rows: number
+    rows?: number
     loading: boolean
-    count: number
-    bg: boolean
+    count?: number
+    bg?: boolean
 }
 
 const props = withDefaults(defineProps<skeletonProps>(), {
@@ -20,16 +19,9 @@ const props = withDefaults(defineProps<skeletonProps>(), {
 <template>
     <template v-if="props.loading">
         <template v-for="i in props.count" :key="i">
-
             <div :class="[props.bg ? $style.skeleton : '']" v-bind="$attrs">
-
-
                 <slot v-if="props.loading" :key="i" name="template">
-
                 </slot>
-
-
-
             </div>
         </template>
     </template>

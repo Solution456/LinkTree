@@ -11,7 +11,7 @@ import { ref } from "vue";
 
 
 export default function useAuthUser() {
-    const {login} = useAuth()
+    const { login } = useAuth()
     const userStore = useUserStore()
     const loading = ref(false)
     const errors = ref<AuthError | null>(null)
@@ -45,8 +45,11 @@ export default function useAuthUser() {
                 password
             })
             errors.value = error
-            if(data.session?.access_token)
+            if (data.session?.access_token) {
                 login(data.session.access_token)
+                userStore.User.id = data.session.user.id
+            }
+
         } catch (error) {
             if (error instanceof Error) {
                 alert(error.message)
@@ -62,6 +65,8 @@ export default function useAuthUser() {
             const { error } = await supabase.auth.signOut()
             errors.value = error
             deleteCookieToken()
+            userStore.$reset()
+            
         } catch (error) {
             if (error instanceof Error) {
                 alert(error.message)
@@ -74,16 +79,18 @@ export default function useAuthUser() {
 
     const getSession = async () => {
         const data = await supabase.auth.getSession()
-        if (data.data.session?.user.role && !data.error){
+        if (data.data.session?.user.role && !data.error) {
+
             console.log('data')
             userStore.isAuth = true
+            userStore.User.id = data.data.session.user.id
         }
-        
+
 
     }
 
     const updateSession = () => {
-        
+
     }
 
     return {
