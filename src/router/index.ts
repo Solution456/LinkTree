@@ -5,6 +5,7 @@ import { layout } from '@/layouts'
 // import { useUserStore } from "@/stores/userStore";
 // import {storeToRefs} from 'pinia'
 import { getCookieToken } from '@/composables/Auth'
+import { useUserStore } from '@/stores/userStore'
 
 
 const authPage = () => import('@/pages/AuthPage.vue')
@@ -40,12 +41,13 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
-    
+    console.log(getCookieToken())
     if (to.name !== 'Auth' && !getCookieToken()) {
         next({name: 'Auth'})
-    } else if(to.name === 'Auth' && getCookieToken()){
+    } else if(to.name === 'Auth' && getCookieToken() ){
         next({name:'Links'})
     }else{
+
         next()
     }
     
