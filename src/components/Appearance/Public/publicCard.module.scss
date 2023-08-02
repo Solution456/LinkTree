@@ -1,0 +1,7 @@
+@import '/src/assets/styles/_variables';
+
+.card {
+    background-color: $text-white;
+    border-radius: $rounded-lg;
+    padding: 1.5rem;
+}

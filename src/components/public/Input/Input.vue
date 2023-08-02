@@ -34,7 +34,7 @@ const inputHandler = (event: Event) => {
         <div :class="$style.input">
             <div :class="$style.input__el">
                 <div :class="$style.input__box">
-                    <input @input="inputHandler" :value="props.modelValue" v-bind="$attrs" :required="props.required" :id="props.id" :name="props.name"
+                    <input @input="inputHandler" v-model="props.modelValue" v-bind="$attrs" :required="props.required" :id="props.id" :name="props.name"
                         :type="props.type">
                     <label :for="props.id">
                         {{ props.label }}

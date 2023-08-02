@@ -55,7 +55,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="home">
+    <section class="home">
         <div class="container">
             <div class="home_title">
                 <h4 class="title-2"> Links </h4>
@@ -80,7 +80,7 @@ onMounted(async () => {
                 </template>
             </Modal>
         </div>
-    </div>
+    </section>
 </template>
 
 

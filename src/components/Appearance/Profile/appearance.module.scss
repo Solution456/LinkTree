@@ -1,0 +1,73 @@
+@import '/src/assets/styles/_variables';
+
+
+.profile {
+
+    &__info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__avatar {
+        flex-shrink: 0;
+
+        .wrapper {
+            display: flex;
+            border-radius: 100%;
+            background-color: rgb(235, 238, 241);
+            height: 96px;
+            width: 96px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .avatar {
+            border-radius: 100%;
+            height: 96px;
+            width: 96px;
+            border: 1px solid rgb(235, 238, 241);
+            object-fit: contain;
+            display: block;
+        }
+
+        .temp-avatar {
+            display: flex;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            border-radius: 100%;
+            height: 96px;
+            width: 96px;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            span {
+                font-size: 2rem;
+                font-weight: 600;
+            }
+        }
+
+    }
+
+    &__actions {
+        width: 100%;
+
+        &+div {
+            width: 100%;
+        }
+    }
+
+    &__form {
+
+        margin: 2.25rem 0;
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+        }
+    }
+}

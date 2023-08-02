@@ -9,10 +9,14 @@ import type { Rules } from "async-validator"
 export const useValidator = <T>(formData: Ref<T>, rules: ComputedRef<object>) => {
 
     const {errorFields, isFinished, pass}= useAsyncValidator(formData, rules as ComputedRef<Rules>, {
-        validateOption: {suppressWarning:true}
+        
     })
 
+
+    console.log(errorFields.value)
     const tries = ref(0)
+
+    console.log('fas')
 
     const isValid = () => {
         tries.value++

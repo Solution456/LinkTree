@@ -22,10 +22,10 @@ const setAuthState = (s:typeState):void => {
 </script>
 
 <template>
-    <div :class="$style.authPage">
+    <section :class="$style.authPage">
         <AuthForm @updateState="setAuthState" :state="stateAuth"/>
        
-    </div>
+    </section>
 </template>
 
 
