@@ -11,6 +11,7 @@ import { useUserStore } from '@/stores/userStore'
 const authPage = () => import('@/pages/AuthPage.vue')
 const linkPage = () => import('@/pages/LinkPage.vue')
 const appearancePage = () => import('@/pages/AppearancePage.vue')
+const accountPage = () => import('@/pages/AccountPage.vue') 
 
 const router = createRouter({
     history: createWebHistory(),
@@ -33,6 +34,13 @@ const router = createRouter({
             path: '/appearance',
             name: 'Appearance',
             component: appearancePage,
+            meta: { layout: layout.Base, reqAuth: true}
+        },
+
+        {
+            path: '/account',
+            name: 'Account',
+            component: accountPage,
             meta: { layout: layout.Base, reqAuth: true}
         },
     ]
