@@ -58,7 +58,8 @@
 
 
             &:focus+label,
-            &:valid+label {
+            &:valid+label,
+            &:disabled+label {
                 transform: scale(.85) translateY(-.75rem) translateX(0);
 
             }

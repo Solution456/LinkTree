@@ -4,4 +4,16 @@
     background-color: $text-white;
     border-radius: $rounded-lg;
     padding: 1.5rem;
+
+    &__footer{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.5rem;
+    }
+}
+
+.card-title {
+    font-size: 1.25rem;
+
+    
 }

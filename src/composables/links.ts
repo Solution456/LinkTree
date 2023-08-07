@@ -36,8 +36,6 @@ export const useLinks = () => {
             
             Links.value = links
             isLoading.value = false
-
-            console.log('debug', isLoading.value)
         } catch (err) {
             Error.value = err
             isLoading.value = false

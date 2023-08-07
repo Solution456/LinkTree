@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-
     "baseUrl": "./src/",
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -31,7 +30,8 @@
       "@/stores/*": ["stores/*"],
       "@/composables/*": ["composables/*"],
       "@/types/*":["@types/*"]
-    }
+    },
+    
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]

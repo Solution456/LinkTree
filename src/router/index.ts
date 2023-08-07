@@ -41,7 +41,6 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
-    console.log(getCookieToken())
     if (to.name !== 'Auth' && !getCookieToken()) {
         next({name: 'Auth'})
     } else if(to.name === 'Auth' && getCookieToken() ){

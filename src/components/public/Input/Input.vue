@@ -10,7 +10,7 @@ interface InputProps {
     required?: boolean,
     disabled?: boolean,
     error?: string | false
-    modelValue: string
+    modelValue: any
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -23,8 +23,6 @@ const emit = defineEmits<{
 
 const inputHandler = (event: Event) => {
     emit('update:modelValue', (event.target as HTMLInputElement).value)
-
-
 }
 </script>
 
@@ -35,7 +33,7 @@ const inputHandler = (event: Event) => {
             <div :class="$style.input__el">
                 <div :class="$style.input__box">
                     <input @input="inputHandler" v-model="props.modelValue" v-bind="$attrs" :required="props.required" :id="props.id" :name="props.name"
-                        :type="props.type">
+                        :type="props.type" :disabled="props.disabled">
                     <label :for="props.id">
                         {{ props.label }}
                     </label>

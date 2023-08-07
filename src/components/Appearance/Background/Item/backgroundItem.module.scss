@@ -60,12 +60,35 @@
     .background {
         height: 100%;
         width: 100%;
-        background-color: $purple-prim;
+        background-color: rgb(61 68 75);
 
         &::before {
             display: flex;
             padding-top: 150%;
 
         }
+
+        svg {
+            display: flex;
+            height: 2.5rem;
+            width: 2.5rem;
+            border-radius: $rounded;
+            padding: .25rem;
+            background-color: #0000000d;
+        }
+    }
+
+    .--gradient {
+        background-image: linear-gradient(to top, #3d444b, #685d73);
+        background-color: transparent;
+    }
+
+    .--media {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border: dashed 1px rgb(168,170,162);
+        border-radius: .5rem;
     }
 }

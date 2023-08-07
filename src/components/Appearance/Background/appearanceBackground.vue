@@ -2,31 +2,18 @@
 
 import { ref } from 'vue';
 
+import { backgroundVariant } from '@/constants/background';
+
 import publicCard from '@/components/Appearance/Public/publicCard.vue'
 import Grid from '@/components/public/Grid/Grid.vue';
 import backgroundItem from '@/components/Appearance/Background/Item/backgroundItem.vue'
+import ColorPicker from '@/components/Appearance/ColorPicker/ColorPicker.vue'
 
 
-const tempBgData = [
-    {
-        id: 1,
-        bgName: 'Flat Colour'
-    },
-    {
-        id: 2,
-        bgName: 'Gradient'
-    },
-    {
-        id: 3,
-        bgName: 'Image'
-    },
-    {
-        id: 4,
-        bgName: 'Video'
-    },
-]
+
 
 const activeBg = ref(1)
+const backgroundColor = ref<string >()
 
 const handleClick = (id:number) => {
     activeBg.value = id
@@ -45,12 +32,21 @@ const handleClick = (id:number) => {
             <template #content>
                 <Grid>
                     <backgroundItem 
-                      v-for="bg in tempBgData" :key="bg.id" 
-                      :bg-name="bg.bgName"
+                      v-for="bg in backgroundVariant" :key="bg.id" 
+                      :id="bg.id"
+                      :name="bg.name"
                       :is-active="bg.id === activeBg"
-                      @click="handleClick(bg.id)"
+                      @click="handleClick(Number(bg.id))"
                       />
                 </Grid>
+            </template>
+            <template #footer>
+                <h4 class="body-base">
+                    Color
+                </h4>
+                <div>
+                    <ColorPicker v-model:model-value="backgroundColor" />
+                </div>
             </template>
         </publicCard>
 
