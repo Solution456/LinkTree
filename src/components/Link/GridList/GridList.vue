@@ -5,7 +5,7 @@ import LinkCard from '@/components/Link/Card.vue'
 import Skeleton from '@/components/public/Skeleton/Skeleton.vue'
 import SkeletonLink from "@/components/Link/SkeletonLink/SkeletonLink.vue"
 
-import { linkItem } from '@/types/types'
+import { linkItem } from '@/@types/types.ts'
 
 
 interface GridListProps {
