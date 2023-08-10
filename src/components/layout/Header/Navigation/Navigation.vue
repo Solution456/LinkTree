@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import {storeToRefs} from 'pinia'
+import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router';
 
 import { useUserStore } from "@/stores/userStore";
 import useAuthUser from "@/composables/user";
-import { NAV_ITEMS } from '@/constants';
+import { NAV_ITEMS, MenuItems } from '@/constants';
 
 
-import Button from "@/components/public/Button/Button.vue";
 import NavItem from '@/components/layout/Header/Navigation/NavItem.vue'
+import { Dropdown, DropdownItem } from '@/components/public/Dropdown'
 
-
-const {isAuth} = storeToRefs(useUserStore())
-const {userSignOut} = useAuthUser()
+const { isAuth } = storeToRefs(useUserStore())
+const { userSignOut } = useAuthUser()
 const router = useRouter()
 
 const handleLogOut = async () => {
@@ -22,6 +21,8 @@ const handleLogOut = async () => {
         name: 'Auth'
     })
 }
+
+
 
 
 </script>
@@ -36,15 +37,35 @@ const handleLogOut = async () => {
                     <div :class="$style.nav__items_inner">
                         <a href="" class="logo"></a>
                         <div :class="$style.nav__list">
-                            <NavItem v-for="item of NAV_ITEMS" :key="item.name" :item="item"/>
+                            <NavItem v-for="item of NAV_ITEMS" :key="item.name" :item="item" />
                         </div>
                     </div>
                 </div>
                 <div v-if="isAuth" :class="$style.nav__actions">
                     <div :class="$style.nav__actions__box">
-                        <Button @click="handleLogOut">
-                            Выход
-                        </Button>
+                        <Dropdown>
+                            <template #dropdown-content>
+                                <DropdownItem v-for="item of MenuItems.slice(0, -1)" :key="item.name">
+                                    <div :class="$style['menu-item']">
+                                        <div :class="$style['menu-icon']">
+                                            <component :class="$style['menu-icon']" :is="item.icon" />
+                                        </div>
+
+                                        {{ item.name }}
+                                    </div>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <button @click="handleLogOut" :class="$style['menu-item']" class="menu-button">
+                                        <div :class="$style['menu-icon']">
+                                            <component :is="MenuItems.at(-1)?.icon" />
+                                        </div>
+
+                                        {{ MenuItems.at(-1)?.name }}
+                                    </button>
+                                </DropdownItem>
+                            </template>
+                        </Dropdown>
+
                     </div>
                 </div>
             </div>

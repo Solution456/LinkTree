@@ -25,7 +25,7 @@ $warn-opacity: rgba($color: $warn-hover, $alpha: 0.1);
 
 $overlay: rgba(41, 41, 41, 0.3);
 
-$gray-hover: rgba(209,213,219, 0.3);
+$gray-hover: rgba(209, 213, 219, 0.3);
 
 
 /* Border radius */
@@ -37,10 +37,15 @@ $rounded-md: .5rem;
 
 /* Overlay */
 
-$overlay-color: rgba(0,0,0,0.4);
+$overlay-color: rgba(0, 0, 0, 0.4);
 
 /* Fonts */
 $body-font: 'Noto Sans', sans-serif;
+
+
+/* BoxShadow */
+$shadow: 0px 20px 37px -4px rgba(71, 71, 71, 0.2);
+
 
 
 /* Breakpoints */

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-
 import HeaderNavigation from '@/components/layout/Header/Navigation/Navigation.vue'
-
 </script>
 
 
