@@ -10,7 +10,7 @@ import { NAV_ITEMS, MenuItems } from '@/constants';
 import NavItem from '@/components/layout/Header/Navigation/NavItem.vue'
 import { Dropdown, DropdownItem } from '@/components/public/Dropdown'
 
-const { isAuth } = storeToRefs(useUserStore())
+const { isAuth,  User} = storeToRefs(useUserStore())
 const { userSignOut } = useAuthUser()
 const router = useRouter()
 
@@ -46,8 +46,8 @@ const handleLogOut = async () => {
                         <Dropdown>
                             <template #button-content-icon>
                                 <div :class="$style.user__avatar">
-                                    <div v-if="false" :class="$style.wrapper">
-                                        <img src="" alt="" :class="$style.avatar">
+                                    <div v-if="User.UserDetails" :class="$style.wrapper">
+                                        <img :src="User.UserDetails.avatar_url" alt="" :class="$style.avatar">
                                     </div>
 
                                     <div v-else :class="$style['temp-avatar']">
