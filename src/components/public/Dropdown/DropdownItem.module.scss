@@ -1,0 +1,17 @@
+.dropdown__item {
+    cursor: pointer;
+
+    &>span {
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 1rem;
+
+        transition: background-color cubic-bezier(0, 0, 0.2, 1) .75s;
+    }
+
+    &>span:hover {
+        background-color: rgb(246, 247, 245);
+    }
+
+}

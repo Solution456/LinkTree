@@ -13,7 +13,7 @@ interface InputProps {
     modelValue: any
 }
 
-const props = withDefaults(defineProps<InputProps>(), {
+withDefaults(defineProps<InputProps>(), {
     type: 'text',
     required: true
 })
@@ -32,16 +32,16 @@ const inputHandler = (event: Event) => {
         <div :class="$style.input">
             <div :class="$style.input__el">
                 <div :class="$style.input__box">
-                    <input @input="inputHandler" v-model="props.modelValue" v-bind="$attrs" :required="props.required" :id="props.id" :name="props.name"
-                        :type="props.type" :disabled="props.disabled">
-                    <label :for="props.id">
-                        {{ props.label }}
+                    <input @input="inputHandler" :value='modelValue' :required="required" :id="id" :name="name"
+                        :type="type" :disabled="disabled">
+                    <label :for="id">
+                        {{ label }}
                     </label>
                 </div>
             </div>
         </div>
-        <div v-show="!!props.error" :class="$style.input__error">
-            {{ props.error }}
+        <div v-show="!!error" :class="$style.input__error">
+            {{ error }}
         </div>
     </div>
 </template>

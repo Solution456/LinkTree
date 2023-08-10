@@ -79,10 +79,10 @@ const handleSignUp = async () => {
                 </div>
                 <form @submit.prevent="handleSignIn" class="auth_form">
                     <div class="mb-2">
-                        <Input :error="error('email')" name="email" id="1" label="email" v-model="formValue.email" />
+                        <Input :error="error('email')" name="email" id="1" :key="'email'" label="email" v-model="formValue.email" />
                     </div>
                     <div class="mb-4">
-                        <Input name="password" :error="error('password')" id="2" label="password"
+                        <Input name="password" :error="error('password')" :key="'password'" id="2" label="password"
                             v-model="formValue.password" type="password" />
                     </div>
                     <div class="mb-6">
@@ -105,10 +105,10 @@ const handleSignUp = async () => {
                 </div>
                 <form @submit.prevent="handleSignUp" class="auth_form">
                     <div class="mb-2">
-                        <Input :error="error('email')" name="email" id="1" label="email" v-model="formValue.email" />
+                        <Input :error="error('email')" name="email" id="3" :key="'email'" label="email" v-model="formValue.email" />
                     </div>
                     <div class="mb-8">
-                        <Input :error="error('password')" name="password" id="2" label="password"
+                        <Input :error="error('password')" name="password" id="4" :key="'password'" label="password"
                             v-model="formValue.password" type="password" />
                     </div>
                     <div class="mb-8">

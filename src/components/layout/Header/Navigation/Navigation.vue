@@ -44,6 +44,19 @@ const handleLogOut = async () => {
                 <div v-if="isAuth" :class="$style.nav__actions">
                     <div :class="$style.nav__actions__box">
                         <Dropdown>
+                            <template #button-content-icon>
+                                <div :class="$style.user__avatar">
+                                    <div v-if="false" :class="$style.wrapper">
+                                        <img src="" alt="" :class="$style.avatar">
+                                    </div>
+
+                                    <div v-else :class="$style['temp-avatar']">
+                                        <span>
+                                            @
+                                        </span>
+                                    </div>
+                                </div>
+                            </template>
                             <template #dropdown-content>
                                 <DropdownItem v-for="item of MenuItems.slice(0, -1)" :key="item.name">
                                     <div :class="$style['menu-item']">
@@ -55,7 +68,7 @@ const handleLogOut = async () => {
                                     </div>
                                 </DropdownItem>
                                 <DropdownItem>
-                                    <button @click="handleLogOut" :class="$style['menu-item']" class="menu-button">
+                                    <button @click="handleLogOut" :class="[$style['menu-item'], $style['menu-button']]">
                                         <div :class="$style['menu-icon']">
                                             <component :is="MenuItems.at(-1)?.icon" />
                                         </div>

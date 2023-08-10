@@ -1,0 +1,81 @@
+@import '/src/assets/styles/_variables';
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+
+    &__button {
+        &-icon {
+            background-color: transparent;
+            border-radius: 9999px;
+            outline: solid 2px rgba(255, 255, 255, 0);
+            cursor: pointer;
+
+
+            &:hover {
+                outline-color: #e0e2d9;
+                outline-offset: 2px;
+                outline-width: 2px;
+                outline-style: solid;
+
+            }
+
+            &:focus {
+                outline-color: #000000;
+                outline-offset: 2px;
+                outline-width: 2px;
+                outline-style: solid;
+            }
+
+        }
+
+        &-main {
+            display: inline-flex;
+            width: 100%;
+            justify-content: center;
+            border-radius: $rounded-md;
+            background-color: white;
+            padding: .5rem .75rem;
+            font-size: .75rem;
+            font-weight: 500;
+            cursor: pointer;
+
+
+            &:hover {
+                background-color: $gray-hover;
+            }
+
+        }
+    }
+
+
+    &__content {
+        position: absolute;
+        right: 0;
+        z-index: 10;
+        margin: .5rem;
+        transform-origin: top right;
+        border-radius: $rounded-md;
+        width: 14rem;
+        background-color: white;
+
+        padding: .5rem 1.25rem;
+
+        box-shadow: $shadow;
+
+        &:focus {
+            outline: none;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            padding: .5rem 0;
+            row-gap: .5rem;
+
+        }
+    }
+
+
+}

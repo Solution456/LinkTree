@@ -7,7 +7,6 @@ import Button from '@/components/public/Button/Button.vue';
 import Input from '@/components/public/Input/Input.vue';
 import publicCard from '@/components/Appearance/Public/publicCard.vue'
 
-
 const tempData = ref({
     profileTitle: '@pinkStorm',
     profileBio: '',
