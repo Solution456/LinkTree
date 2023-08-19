@@ -46,7 +46,7 @@ const handleLogOut = async () => {
                         <Dropdown>
                             <template #button-content-icon>
                                 <div :class="$style.user__avatar">
-                                    <div v-if="User.UserDetails" :class="$style.wrapper">
+                                    <div v-if="User.UserDetails?.avatar_url" :class="$style.wrapper">
                                         <img :src="User.UserDetails.avatar_url" alt="" :class="$style.avatar">
                                     </div>
 

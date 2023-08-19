@@ -6,6 +6,10 @@ import { ref } from 'vue';
 import Button from '@/components/public/Button/Button.vue';
 import Input from '@/components/public/Input/Input.vue';
 import publicCard from '@/components/public/Card/publicCard.vue'
+import { useUserStore } from '@/stores/userStore';
+
+
+const userStore = useUserStore()
 
 const tempData = ref({
     profileTitle: '@pinkStorm',
@@ -24,8 +28,8 @@ const tempData = ref({
             <template #content>
                 <div :class="$style.profile__info">
                     <div :class="$style.profile__avatar">
-                        <div v-if="false" :class="$style.wrapper">
-                            <img src="" alt="" :class="$style.avatar">
+                        <div v-if="userStore.User.UserDetails?.avatar_url" :class="$style.wrapper">
+                            <img :src="userStore.User.UserDetails.avatar_url" alt="" :class="$style.avatar">
                         </div>
 
                         <div v-else :class="$style['temp-avatar']">
