@@ -14,6 +14,7 @@ onMounted(() => {
       
       userStore.isAuth = true
       userStore.User.id = session.data.session.user.id
+      userStore.fetchUser()
     }
 
     else if(getCookieToken()){

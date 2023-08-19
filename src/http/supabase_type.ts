@@ -44,17 +44,17 @@ export interface Database {
         Row: {
           avatar_url: string | null
           id: string
-          user_name: string | null
+          username: string | null
         }
         Insert: {
           avatar_url?: string | null
           id: string
-          user_name?: string | null
+          username?: string | null
         }
         Update: {
           avatar_url?: string | null
           id?: string
-          user_name?: string | null
+          username?: string | null
         }
         Relationships: [
           {

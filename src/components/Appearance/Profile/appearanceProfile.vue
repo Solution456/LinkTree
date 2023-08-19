@@ -5,7 +5,7 @@ import { ref } from 'vue';
 
 import Button from '@/components/public/Button/Button.vue';
 import Input from '@/components/public/Input/Input.vue';
-import publicCard from '@/components/Appearance/Public/publicCard.vue'
+import publicCard from '@/components/public/Card/publicCard.vue'
 
 const tempData = ref({
     profileTitle: '@pinkStorm',
@@ -44,8 +44,8 @@ const tempData = ref({
                 </div>
                 <div :class="$style.profile__form">
                     <div :class="$style.wrapper">
-                        <Input value="" name="Profile-title" id="1" label="Profile Title" v-model="tempData.profileTitle" />
-                        <Input value="" name="Profile-bio" id="2" label="Bio" v-model="tempData.profileBio" />
+                        <Input  name="Profile-title" id="1" label="Profile Title" v-model="tempData.profileTitle" />
+                        <Input  name="Profile-bio" id="2" label="Bio" v-model="tempData.profileBio" />
                     </div>
                 </div>
             </template>

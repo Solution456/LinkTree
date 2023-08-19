@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 
 
 import { useUserStore } from "@/stores/userStore";
-import useAuthUser from "@/composables/user";
+import {useAuthUser} from "@/composables/user";
 import {NAV_ITEMS} from '@/constants'
 
 import Button from "@/components/public/Button/Button.vue";

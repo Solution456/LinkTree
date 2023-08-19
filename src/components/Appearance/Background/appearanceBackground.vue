@@ -4,7 +4,7 @@ import { ref } from 'vue';
 
 import { backgroundVariant } from '@/constants/background';
 
-import publicCard from '@/components/Appearance/Public/publicCard.vue'
+import publicCard from '@/components/public/Card/publicCard.vue'
 import Grid from '@/components/public/Grid/Grid.vue';
 import backgroundItem from '@/components/Appearance/Background/Item/backgroundItem.vue'
 import ColorPicker from '@/components/Appearance/ColorPicker/ColorPicker.vue'

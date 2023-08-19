@@ -10,7 +10,7 @@ import { ref } from "vue";
 
 
 
-export default function useAuthUser() {
+export function useAuthUser() {
     const { login } = useAuth()
     const userStore = useUserStore()
     const loading = ref(false)
@@ -66,7 +66,7 @@ export default function useAuthUser() {
             errors.value = error
             deleteCookieToken()
             userStore.$reset()
-            
+
         } catch (error) {
             if (error instanceof Error) {
                 alert(error.message)
@@ -104,3 +104,65 @@ export default function useAuthUser() {
         session
     }
 }
+
+export const useUserApi = () => {
+    const isLoading = ref<boolean>(false)
+    const Error = ref<unknown>()
+
+    const fetchUserData = async (userId: string) => {
+        isLoading.value = true
+
+        try {
+            const { data, error } = await supabase.from('users')
+                .select('username, avatar_url')
+                .eq('id', userId)
+                .single()
+
+            if (error) {
+                console.log(error)
+                isLoading.value = false
+                return null
+            }
+
+            isLoading.value = false
+
+            return data
+        } catch (error) {
+            console.log('Add error', error)
+            isLoading.value = false
+            return null
+        }
+    }
+
+    const updateUserData = async (userId: string, userData: string) => {
+        isLoading.value = true
+        try {
+            const { error } = await supabase.from('users')
+                .update({
+                    'username': userData
+                })
+                .eq('id', userId)
+
+            if (error) {
+                console.log(error)
+                isLoading.value = false
+                return null
+            }
+
+            isLoading.value = false
+        } catch (error) {
+            console.log('Add error', error)
+            isLoading.value = false
+            return null
+        }
+    }
+
+
+    return {
+        fetchUserData,
+        updateUserData,
+        isLoading,
+        Error
+    }
+}
+

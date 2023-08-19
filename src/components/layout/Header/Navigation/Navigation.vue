@@ -3,7 +3,7 @@ import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router';
 
 import { useUserStore } from "@/stores/userStore";
-import useAuthUser from "@/composables/user";
+import {useAuthUser} from "@/composables/user";
 import { NAV_ITEMS, MenuItems } from '@/constants';
 
 
@@ -64,7 +64,7 @@ const handleLogOut = async () => {
                                             <component :class="$style['menu-icon']" :is="item.icon" />
                                         </div>
 
-                                        {{ item.name }}
+                                        <RouterLink :to="`/${item.name.toLowerCase()}`">{{ item.name }}</RouterLink>
                                     </div>
                                 </DropdownItem>
                                 <DropdownItem>

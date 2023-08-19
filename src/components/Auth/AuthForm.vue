@@ -6,7 +6,7 @@ import Input from '@/components/public/Input/Input.vue';
 import Button from '@/components/public/Button/Button.vue';
 
 
-import useAuthUser from '@/composables/user';
+import {useAuthUser} from '@/composables/user';
 import { required, useValidator, email } from '@/composables/Validate';
 
 import styles from './AuthForm.module.scss'
