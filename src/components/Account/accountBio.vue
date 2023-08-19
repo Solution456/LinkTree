@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 import publicCard from '@/components/public/Card/publicCard.vue'
 import Input from '@/components/public/Input/Input.vue';
@@ -10,14 +10,22 @@ import { useUserStore } from '@/stores/userStore'
 import { storeToRefs } from 'pinia';
 
 
-const userStore = useUserStore()
 
-const {isLoading} = storeToRefs(userStore)
-const formData = ref({
-    username: userStore.User.UserDetails?.username || '',
+const userStore = useUserStore()
+let copyFormData = {username:''}
+const { isLoading } = storeToRefs(userStore)
+
+const username = computed(() => {
+    if (userStore.User.UserDetails?.username)
+        return userStore.User.UserDetails.username
+    return ''
 })
 
-const copyFormData = Object.assign({}, formData.value)
+const formData = ref({
+    username: '' ,
+})
+
+
 
 const editState = ref(false)
 
@@ -28,14 +36,23 @@ const handleUpdateEditState = () => {
         return
     }
 
-    formData.value.username = copyFormData.username
+    formData.value.username = copyFormData?.username
 
     editState.value = false
 }
 
 const handleApprove = () => {
     userStore.updateUserData(formData.value.username)
+    editState.value = false
 }
+
+watch(() => username.value,
+    (value) => {
+        formData.value.username = value
+
+        copyFormData = Object.assign({}, formData.value)
+    }
+)
 
 
 </script>
@@ -50,7 +67,8 @@ const handleApprove = () => {
             <template #content>
                 <div :class="$style['account-bio__form']">
                     <div :class="$style.wrapper">
-                        <Input :disabled="!editState || isLoading" name="username" id="1" label="username" v-model="formData.username" />
+                        <Input :disabled="!editState || isLoading" name="username" id="1" label="username"
+                            v-model="formData.username" />
                     </div>
                 </div>
             </template>
@@ -59,7 +77,8 @@ const handleApprove = () => {
 
         <div class="mt-2" :class="$style.actions">
             <div>
-                <Button :isLoading="isLoading" @click="handleUpdateEditState" :class="editState ? $style.cancel__button : ''">
+                <Button :isLoading="isLoading" @click="handleUpdateEditState"
+                    :class="editState ? $style.cancel__button : ''">
                     <template v-if="!editState">
                         Edit Bio
                     </template>
@@ -71,7 +90,7 @@ const handleApprove = () => {
             </div>
 
             <div v-if="editState">
-                <Button @click="handleApprove"  :isLoading="isLoading" :class="$style.approve__button">
+                <Button @click="handleApprove" :isLoading="isLoading" :class="$style.approve__button">
                     Approve
                 </Button>
             </div>
