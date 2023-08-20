@@ -47,6 +47,10 @@ export const useUserStore = defineStore('user', {
             this.isLoading = true
             const { updateUserData } = useUserApi()
             await updateUserData(this.User.id, userData)
+            if (this.User.UserDetails) {
+                this.User.UserDetails.username = userData
+                this.isLoading = false
+            }
             this.isLoading = false
 
         }

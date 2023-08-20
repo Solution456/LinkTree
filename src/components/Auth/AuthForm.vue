@@ -25,7 +25,7 @@ const emit = defineEmits<{
 }>()
 
 
-const { userSignIn, userSignUp, errors } = useAuthUser()
+const { userSignIn, userSignUp, errors, loading } = useAuthUser()
 
 
 const formValue = ref({
@@ -86,7 +86,7 @@ const handleSignUp = async () => {
                             v-model="formValue.password" type="password" />
                     </div>
                     <div class="mb-6">
-                        <Button :disabled="!disabledState" type="submit">
+                        <Button :isLoading="loading" :disabled="!disabledState || loading" type="submit">
                             Log In
                         </Button>
                     </div>
@@ -120,7 +120,7 @@ const handleSignUp = async () => {
                     </div>
 
                     <div class="mb-6">
-                        <Button :disabled="!disabledState" type="submit">
+                        <Button :isLoading="loading" :disabled="!disabledState || loading" type="submit">
                             Create account
                         </Button>
                     </div>

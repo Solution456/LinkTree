@@ -1,31 +1,27 @@
 <script setup lang="ts">
 
 import { computed, ref, watch } from 'vue';
+import { storeToRefs } from 'pinia';
 
 import publicCard from '@/components/public/Card/publicCard.vue'
 import Input from '@/components/public/Input/Input.vue';
 import Button from '@/components/public/Button/Button.vue';
 
 import { useUserStore } from '@/stores/userStore'
-import { storeToRefs } from 'pinia';
-
+import { clone } from '@/utils/clone.ts'
 
 
 const userStore = useUserStore()
-let copyFormData = {username:''}
-const { isLoading } = storeToRefs(userStore)
+const { isLoading, User } = storeToRefs(userStore)
 
-const username = computed(() => {
-    if (userStore.User.UserDetails?.username)
-        return userStore.User.UserDetails.username
-    return ''
+
+const name = computed(() => {
+    return User.value.UserDetails?.username ? User.value.UserDetails?.username : ''
 })
 
 const formData = ref({
-    username: '' ,
+    username: clone(name.value)
 })
-
-
 
 const editState = ref(false)
 
@@ -36,8 +32,7 @@ const handleUpdateEditState = () => {
         return
     }
 
-    formData.value.username = copyFormData?.username
-
+    formData.value.username = clone(name.value)
     editState.value = false
 }
 
@@ -46,15 +41,10 @@ const handleApprove = () => {
     editState.value = false
 }
 
-watch(() => username.value,
-    (value) => {
-        formData.value.username = value
-
-        copyFormData = Object.assign({}, formData.value)
-    }
+watch(
+    () => name.value,
+    () => formData.value.username = clone(name.value)
 )
-
-
 </script>
 
 
