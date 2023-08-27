@@ -13,10 +13,8 @@ export const useValidator = <T>(formData: Ref<T>, rules: ComputedRef<object>) =>
     })
 
 
-    console.log(errorFields.value)
     const tries = ref(0)
 
-    console.log('fas')
 
     const isValid = () => {
         tries.value++

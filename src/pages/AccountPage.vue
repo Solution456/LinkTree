@@ -1,9 +1,17 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 
 
 import accountBio from '@/components/Account/accountBio.vue'
+import accountActions from '@/components/Account/accountActions.vue';
+import accountActionsForm from '@/components/Account/accountActionsForm.vue';
+import Modal from '@/components/public/Modal/Modal.vue';
 
+const accountActionsModal = ref<InstanceType<typeof Modal> | null>(null)
 
+const accountActionsModalShown = () => {
+    accountActionsModal.value?.openClose()
+}
 
 
 </script>
@@ -16,11 +24,15 @@ import accountBio from '@/components/Account/accountBio.vue'
             </div>
 
             <accountBio />
+            <accountActions @open-modal="accountActionsModalShown"/>
 
-            
+            <Modal transition='bounce' ref="accountActionsModal">
+                <template #body>
+                    <accountActionsForm/>
+                </template>
+            </Modal>
 
         </div>
-
     </section>
 </template>
 
