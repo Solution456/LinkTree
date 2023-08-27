@@ -5,7 +5,9 @@ import { ref } from 'vue';
 
 import Button from '@/components/public/Button/Button.vue';
 import Input from '@/components/public/Input/Input.vue';
+import UploadButton from '@/components/public/Upload/uploadButton.vue';
 import publicCard from '@/components/public/Card/publicCard.vue'
+
 import { useUserStore } from '@/stores/userStore';
 
 
@@ -15,6 +17,17 @@ const tempData = ref({
     profileTitle: '@pinkStorm',
     profileBio: '',
 })
+
+const image = ref<File>();
+
+
+const addImage = (file: File) => {
+    image.value = file
+}
+
+const removeImage = () => {
+    image.value = undefined
+}
 
 </script>
 
@@ -41,7 +54,13 @@ const tempData = ref({
 
                     <div :class="$style.profile__actions">
                         <div class="mb-2">
-                            <Button>Upload avatar</Button>
+                            <UploadButton 
+                                :extensions="['jpg', 'png']"
+                                isSingle
+                                :file="image"
+                                @add="addImage"
+                                @remove="removeImage"
+                            />
                         </div>
                         <Button disabled>Remove</Button>
                     </div>
